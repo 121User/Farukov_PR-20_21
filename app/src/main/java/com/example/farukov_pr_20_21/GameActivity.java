@@ -23,6 +23,11 @@ public class GameActivity extends AppCompatActivity{
 
         setContentView(R.layout.activity_game);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        Button btnStart = (Button)findViewById(R.id.btnStart);
+        Button btnDrive2 = (Button)findViewById(R.id.btnDrive2);
+        btnStart.animate().rotation(-90);
+        btnDrive2.animate().rotation(180);
     }
 
     public boolean Started = false;
@@ -34,11 +39,13 @@ public class GameActivity extends AppCompatActivity{
         if(!Finished){
             if(!Started){
                 semafor.setBackgroundColor(0xff008000); //green
+                button.setBackgroundColor(0xfff00000); //red
                 button.setText("Pause");
                 Started = true;
             }
             else if(Started){
                 semafor.setBackgroundColor(0xfff00000); //red
+                button.setBackgroundColor(0xff008000); //green
                 button.setText("Start");
                 Started = false;
             }
@@ -58,7 +65,7 @@ public class GameActivity extends AppCompatActivity{
                 margin.leftMargin += 50;
                 margin.rightMargin -= 50;
                 myCar.requestLayout();
-                if(margin.rightMargin <= -200){
+                if(margin.rightMargin <= -100){
                     TextView result = (TextView)findViewById(R.id.tvResult);
                     result.setText("Victory 1 player");
                     button.setText("Again");
@@ -78,7 +85,7 @@ public class GameActivity extends AppCompatActivity{
                 margin.leftMargin += 50;
                 margin.rightMargin -= 50;
                 myCar.requestLayout();
-                if(margin.rightMargin <= -200){
+                if(margin.rightMargin <= -100){
                     TextView result = (TextView)findViewById(R.id.tvResult);
                     result.setText("Victory 2 player");
                     button.setText("Again");
